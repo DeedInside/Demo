@@ -22,7 +22,6 @@ namespace Modul_2.ViewControllers
                 BoxPrice.TextDecorations.Add(TextDecorations.Strikethrough);
 
                 BoxNewPrice.Text = (product.Price * (1 - product.Discount / 100.0)).ToString();
-                //BoxNewPrice.Text = (product.Price - product.Price * product.Discount / 100).ToString();
             }
             if(product.Count == 0)
             {
