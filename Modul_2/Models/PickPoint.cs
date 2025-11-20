@@ -1,8 +1,8 @@
 ﻿namespace Modul_2.Models
 {
-    public class Role
+    public class PickPoint
     {
         public int Id { get; set; }
-        public string Name { get; set; }
+        public string Point { get; set; }
     }
 }

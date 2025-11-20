@@ -1,13 +1,16 @@
-﻿using Modul_2.Models;
+﻿using Modul_2.DataBase;
+using Modul_2.Models.Users;
 using System.Windows;
 
 namespace Modul_2.Windows
 {
     public partial class RegWindow : Window
     {
+        ApplicationContext _context;
         public RegWindow()
         {
             InitializeComponent();
+            _context = new ApplicationContext();
         }
 
         private void ButtonSave(object sender, RoutedEventArgs e)
@@ -16,7 +19,7 @@ namespace Modul_2.Windows
                 !string.IsNullOrWhiteSpace(BoxPass.Text) &&
                 !string.IsNullOrWhiteSpace(BoxName.Text))
             {
-                string login = AppContext.Users.FirstOrDefault(q => q.Login == BoxLogin.Text)?.Login;
+                string login = _context.Users.FirstOrDefault(q => q.Login == BoxLogin.Text)?.Login;
 
                 if (login != null)
                 {
@@ -26,13 +29,13 @@ namespace Modul_2.Windows
                 {
                     User user = new()
                     {
-                        Id = AppContext.Users.Count + 1,
                         Name = BoxName.Text,
                         Password = BoxPass.Text,
                         Login = BoxLogin.Text,
-                        Role = AppContext.Roles.FirstOrDefault(q => q.Name == "Пользователь")
+                        Role = _context.Roles.FirstOrDefault(q => q.Name == "Пользователь")
                     };
-                    AppContext.Users.Add(user);
+                    _context.Users.Add(user);
+                    _context.SaveChanges();
                     DialogResult = true;
                 }
             }

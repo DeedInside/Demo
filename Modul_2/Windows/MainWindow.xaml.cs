@@ -1,4 +1,6 @@
-﻿using Modul_2.Models;
+﻿using Modul_2.DataBase;
+using Modul_2.Models;
+using Modul_2.Models.Users;
 using Modul_2.ViewControllers;
 using Modul_2.Windows;
 using System.Windows;
@@ -8,10 +10,12 @@ namespace Modul_2
 {
     public partial class MainWindow : Window
     {
+        ApplicationContext _context;
         public MainWindow(User user = null)
         {
             InitializeComponent();
-            
+            _context = new ApplicationContext();
+
             if (user != null)
             {
                 RunUserName.Text = user.Name;
@@ -44,11 +48,11 @@ namespace Modul_2
                 RunUserName.Text = "гость";
             }
 
-            DrawProduct(AppContext.Products);
+            DrawProduct(_context.Products.ToList());
         }
         public void DrawProduct(List<Product> products)
         {
-            BoxProducts.ItemsSource = AppContext.Products.Select(p => new ProductItemController(p));
+            BoxProducts.ItemsSource = products.Select(p => new ProductItemController(p));
         }
 
         private void ButtonExit(object sender, RoutedEventArgs e)

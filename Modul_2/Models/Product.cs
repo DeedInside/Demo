@@ -3,25 +3,21 @@
     public class Product
     {
         public int Id { get; set; }
-        /// <summary>
-        /// Артикул
-        /// </summary>
-        public string SKU { get; set; } = string.Empty;
-        public string Name { get; set; } = string.Empty;
+        public NameProduct Name { get; set; }
         /// <summary>
         /// единица измерения
         /// </summary>
-        public string Unit { get; set; } = string.Empty;
+        public UnitProduct Unit { get; set; }
         public double Price { get; set; } = 0.0;
         /// <summary>
         /// поставщик
         /// </summary>
-        public string Supplier { get; set; } = string.Empty;
+        public Supplier Supplier { get; set; }
         /// <summary>
         /// Производитель
         /// </summary>
-        public string Manufacturer { get; set; } = string.Empty;
-        public string Сategory { get; set; } = string.Empty;
+        public Manufacturer Manufacturer { get; set; }
+        public СategoryProduct Сategory { get; set; }
         public int Discount { get; set; } = 0;
         public int Count { get; set; } = 0;
         public string Description { get; set; } = string.Empty;

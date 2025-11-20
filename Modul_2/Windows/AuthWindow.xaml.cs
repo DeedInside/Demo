@@ -1,20 +1,23 @@
-﻿using Modul_2.Models;
+﻿using Modul_2.DataBase;
+using Modul_2.Models.Users;
 using System.Windows;
 
 namespace Modul_2.Windows
 {
     public partial class AuthWindow : Window
     {
+        private ApplicationContext _context;
         public AuthWindow()
         {
             InitializeComponent();
+            _context = new ApplicationContext();
         }
         private void ButtonAuth(object sender, RoutedEventArgs e)
         {
             if(!string.IsNullOrWhiteSpace(BoxLogin.Text) &&
                 !string.IsNullOrWhiteSpace(BoxPass.Text))
             {
-                User? user = AppContext.Users.FirstOrDefault(q => q.Login == BoxLogin.Text &&
+                User? user = _context.Users.FirstOrDefault(q => q.Login == BoxLogin.Text &&
                 q.Password == BoxPass.Text);
                 if (user != null)
                 {

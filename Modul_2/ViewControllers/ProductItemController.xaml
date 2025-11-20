@@ -5,7 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Modul_2.ViewControllers"
              mc:Ignorable="d" 
-             d:DesignHeight="210" d:DesignWidth="1450">
+             d:DesignHeight="210" d:DesignWidth="1450"
+             Background="White">
     <Border BorderBrush="Black" 
         BorderThickness="1"
         Margin="5">
